@@ -1,6 +1,6 @@
 import { expect, assert } from 'chai'
 import { List } from '../src/list'
-import { Some, None } from '../src/option'
+import { Some, Nothing } from '../src/option'
 
 describe('List', () => {
   it('should be iterable', () => {
@@ -55,8 +55,8 @@ describe('List', () => {
   })
 
   describe('.head', () => {
-    it('should be None if list is empty', () => {
-      expect(List.empty().head).to.be.instanceof(None)
+    it('should be Nothing if list is empty', () => {
+      expect(List.empty().head).to.be.instanceof(Nothing)
     })
 
     it('should be the Some of first element', () => {
@@ -69,8 +69,8 @@ describe('List', () => {
   })
 
   describe('.tail', () => {
-    it('should be None for empty list', () => {
-      expect(List.empty().tail).to.be.instanceof(None)
+    it('should be Nothing for empty list', () => {
+      expect(List.empty().tail).to.be.instanceof(Nothing)
     })
 
     it('should return a list without the first element', () => {

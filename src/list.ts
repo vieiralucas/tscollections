@@ -1,4 +1,4 @@
-import { Option, Some, None } from './option'
+import { Option, Some, Nothing } from './option'
 
 export class List<T> {
   private _head: Option<T>
@@ -6,8 +6,8 @@ export class List<T> {
 
   constructor(...args: T[]) {
     if (args.length === 0) {
-      this._head = new None()
-      this._tail = new None()
+      this._head = new Nothing()
+      this._tail = new Nothing()
     } else {
       this._head = new Some(args[0])
       this._tail = new Some(new List(...args.slice(1)))
@@ -36,7 +36,7 @@ export class List<T> {
   }
 
   isEmpty(): boolean {
-    return this._head instanceof None
+    return this._head instanceof Nothing
   }
 
   length(): number {

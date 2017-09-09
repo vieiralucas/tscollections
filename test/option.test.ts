@@ -8,8 +8,8 @@ describe('Option', () => {
       expect(n.isDefined()).to.be.true
     })
 
-    it('should be false for None', () => {
-      const n = new Option.None()
+    it('should be false for Nothing', () => {
+      const n = new Option.Nothing()
       expect(n.isDefined()).to.be.false
     })
   })
@@ -20,8 +20,8 @@ describe('Option', () => {
       expect(n.isEmpty()).to.be.false
     })
 
-    it('should be true for None', () => {
-      const n = new Option.None()
+    it('should be true for Nothing', () => {
+      const n = new Option.Nothing()
       expect(n.isEmpty()).to.be.true
     })
   })
@@ -34,8 +34,8 @@ describe('Option', () => {
       expect(two).to.equal(2)
     })
 
-    it('should return else if it is a None', () => {
-      const n = new Option.None()
+    it('should return else if it is a Nothing', () => {
+      const n = new Option.Nothing()
       const two = n.orElse(2)
 
       expect(two).to.equal(2)
@@ -43,8 +43,8 @@ describe('Option', () => {
   })
 
   describe('.map', () => {
-    it('should remain None', () => {
-      const n = new Option.None()
+    it('should remain Nothing', () => {
+      const n = new Option.Nothing()
       const n2 = n.map(x => 2)
 
       expect(n2.isEmpty()).to.be.true

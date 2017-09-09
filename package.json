@@ -4,7 +4,8 @@
   "description": "Collections implemented in typescript",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha test/*.ts --require ts-node/register"
+    "test": "mocha test/*.ts --require ts-node/register",
+    "watch": "npm run test -- --watch --watch-extensions ts"
   },
   "repository": {
     "type": "git",

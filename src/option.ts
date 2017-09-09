@@ -39,7 +39,7 @@ export class Some<T> extends Option<T> {
   }
 }
 
-export class None<T> extends Option<T> {
+export class Nothing<T> extends Option<T> {
   isDefined() {
     return false
   }
@@ -49,6 +49,6 @@ export class None<T> extends Option<T> {
   }
 
   map<T2>(fn: (value: T) => T2): Option<T2> {
-    return new None()
+    return new Nothing()
   }
 }
