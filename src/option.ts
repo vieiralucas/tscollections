@@ -8,6 +8,14 @@ export abstract class Option<T> {
   abstract orElse(value: T): T
 
   abstract map<T2>(fn: (value: T) => T2): Option<T2>
+
+  static from<T>(value: T | null | undefined) {
+    if (value === null || value === undefined) {
+      return new Nothing<T>()
+    }
+
+    return new Some<T>(value)
+  }
 }
 
 export class Some<T> extends Option<T> {

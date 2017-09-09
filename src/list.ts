@@ -1,75 +1,52 @@
 import { Option, Some, Nothing } from './option'
 
 export class List<T> {
-  private _head: Option<T>
-  private _tail: Option<List<T>>
+  private arr: Array<T>
 
   constructor(...args: T[]) {
-    if (args.length === 0) {
-      this._head = new Nothing()
-      this._tail = new Nothing()
-    } else {
-      this._head = new Some(args[0])
-      this._tail = new Some(new List(...args.slice(1)))
+    this.arr = args
+  }
+
+  get head(): Option<T> {
+    return Option.from(this.arr[0])
+  }
+
+  get tail(): Option<List<T>> {
+    if (this.length() > 1) {
+      return new Some(new List(...this.arr.slice(1)))
     }
-  }
 
-  get head() {
-    return this._head
-  }
-
-  get tail() {
-    return this._tail
+    return new Nothing()
   }
 
   *[Symbol.iterator]() {
-    let list = this
-    if (list._head.isDefined()) {
-      yield (this._head as Some<T>).get()
-    }
-
-    let _tail = list._tail.orElse(List.empty<T>())
-    while (_tail._head.isDefined()) {
-      yield (_tail._head as Some<T>).get()
-      _tail = _tail._tail.orElse(List.empty<T>())
+    for (let el of this.arr) {
+      yield el
     }
   }
 
   isEmpty(): boolean {
-    return this._head instanceof Nothing
+    return this.length() === 0
   }
 
   length(): number {
-    let len = 0
-
-    for (let el of this) {
-      len++
-    }
-
-    return len
+    return this.arr.length
   }
 
   preppend(el: T) {
-    const nL = new List(el)
-    nL._tail = new Some(this)
-    return nL
+    return new List(...[el, ...this.arr])
   }
 
   append(el: T): List<T> {
-    return new List(...this.toArray().concat([el]))
+    return new List(...[...this.arr, el])
   }
 
   reverse(): List<T> {
-    return new List(...this.toArray().reverse())
+    return new List(...this.arr.reverse())
   }
 
   toArray(): Array<T> {
-    const arr = []
-    for (let el of this) {
-      arr.push(el)
-    }
-
-    return arr
+    return this.arr
   }
 
   static empty<T>() {
