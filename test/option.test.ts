@@ -64,4 +64,12 @@ describe('Option', () => {
       expect(s.orElse('')).to.equal('1')
     })
   })
+
+  describe('Option.Some', () => {
+    describe('.get', () => {
+      it('should return the value', () => {
+        expect(new Option.Some(2).get()).to.equal(2)
+      })
+    })
+  })
 })

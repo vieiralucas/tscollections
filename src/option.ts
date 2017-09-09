@@ -33,6 +33,10 @@ export class Some<T> extends Option<T> {
   map<T2>(fn: (value: T) => T2): Option<T2> {
     return new Some(fn(this.value))
   }
+
+  get(): T {
+    return this.value
+  }
 }
 
 export class None<T> extends Option<T> {
