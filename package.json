@@ -1,0 +1,27 @@
+{
+  "name": "typedcollections",
+  "version": "0.0.0",
+  "description": "Collections implemented in typescript",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha test/*.ts --require ts-node/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/vieiralucas/typedcollections.git"
+  },
+  "keywords": [
+    "typescript",
+    "collections"
+  ],
+  "author": "Lucas Vieira <vieiralucas4@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.2"
+  }
+}
