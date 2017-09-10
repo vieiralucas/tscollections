@@ -50,14 +50,7 @@ export class List<T> {
   }
 
   filter(test: (el: T) => boolean): List<T> {
-    let nList = new List<T>()
-    for (let el of this) {
-      if (test(el)) {
-        nList = nList.append(el)
-      }
-    }
-
-    return nList
+    return new List(...this.arr.filter(test))
   }
 
   take(n: number): List<T> {

@@ -117,9 +117,9 @@ describe('List', () => {
   describe('.filter', () => {
     it('should filter elements based on function', () => {
       const numbers = new List(1, 2, 3, 4)
-      const events = numbers.filter((n: number) => n % 2 === 0)
+      const evens = numbers.filter((n: number) => n % 2 === 0)
 
-      expect(events.toArray()).to.be.deep.equal([2, 4])
+      expect(evens.toArray()).to.be.deep.equal([2, 4])
     })
   })
 
