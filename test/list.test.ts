@@ -140,4 +140,13 @@ describe('List', () => {
       expect(one.toArray()).to.be.deep.equal([1])
     })
   })
+
+  describe('.map', () => {
+    it('should create a new List with the results of calling the provided function on every element of the List', () => {
+      const numbers = new List(1, 2, 3, 4)
+      const dbl = numbers.map((n: number) => n * 2)
+
+      expect(dbl.toArray()).to.be.deep.equal([2, 4, 6, 8])
+    })
+  })
 })

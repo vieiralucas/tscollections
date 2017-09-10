@@ -68,6 +68,10 @@ export class List<T> {
     return new List(...this.arr.slice(0, this.length() - n))
   }
 
+  map<T2>(mapper: (el: T) => T2): List<T2> {
+    return new List(...this.arr.map(mapper))
+  }
+
   static empty<T>() {
     return new List<T>()
   }
