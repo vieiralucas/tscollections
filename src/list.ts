@@ -81,6 +81,36 @@ export class List<T> {
     return this.foldl((c, p) => p || predicate(c), false)
   }
 
+  sort(): List<T> {
+    const arrCopy = this.arr.slice()
+    return new List(...arrCopy.sort())
+  }
+
+  sortBy<T2>(mapper: (el: T) => T2): List<T> {
+    const arrCopy = this.arr.slice()
+    const sortedArr = arrCopy.sort((e1, e2) => {
+      const mappedE1 = mapper(e1)
+      const mappedE2 = mapper(e2)
+
+      if (mappedE1 < mappedE2) {
+        return -1
+      } else if (mappedE1 > mappedE2) {
+        return 1
+      } else {
+        return 0
+      }
+    })
+
+    return new List(...sortedArr)
+  }
+
+  sortWith(comparison: (e1: T, e2: T) => number): List<T> {
+    const arrCopy = this.arr.slice()
+    const sortedArr = arrCopy.sort(comparison)
+
+    return new List(...sortedArr)
+  }
+
   static empty<T>() {
     return new List<T>()
   }

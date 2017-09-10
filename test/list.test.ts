@@ -205,4 +205,56 @@ describe('List', () => {
       expect(hasNegative).to.be.false
     })
   })
+
+  describe('.sort', () => {
+    it('should sort a List', () => {
+      const n = new List(2, 1, 3, 4)
+      const sorted = n.sort()
+
+      expect(sorted.toArray()).to.be.deep.equal([1, 2, 3, 4])
+    })
+
+    it('should not mess with old List', () => {
+      const n = new List(2, 1, 3, 4)
+      const sorted = n.sort()
+
+      expect(n.toArray()).to.be.deep.equal([2, 1, 3, 4])
+    })
+  })
+
+  describe('.sortBy', () => {
+    it('should sort a List by a derived property', () => {
+      const john = { name: 'John', age: 37 }
+      const anna = { name: 'Anna', age: 32 }
+      const people = new List(john, anna)
+      const byAge = people.sortBy(p => p.age)
+
+      expect(byAge.toArray()).to.be.deep.equal([anna, john])
+    })
+
+    it('should not mess with old List', () => {
+      const john = { name: 'John', age: 37 }
+      const anna = { name: 'Anna', age: 32 }
+      const people = new List(john, anna)
+      const byAge = people.sortBy(p => p.age)
+
+      expect(people.toArray()).to.be.deep.equal([john, anna])
+    })
+  })
+
+  describe('.sortWith', () => {
+    it('should sort a List with comparison function', () => {
+      const n = new List(2, 1, 3, 4)
+      const sorted = n.sortWith((n1, n2) => n2 - n1)
+
+      expect(sorted.toArray()).to.be.deep.equal([4, 3, 2, 1])
+    })
+
+    it('should not mess with old List', () => {
+      const n = new List(2, 1, 3, 4)
+      const sorted = n.sortWith((n1, n2) => n2 - n1)
+
+      expect(n.toArray()).to.be.deep.equal([2, 1, 3, 4])
+    })
+  })
 })
