@@ -98,7 +98,7 @@ describe('List', () => {
     })
   })
 
-  describe('append', () => {
+  describe('.append', () => {
     it('should append the element to the List', () => {
       const ls = new List(1, 2, 3)
       const app = ls.append(4)
@@ -120,6 +120,15 @@ describe('List', () => {
       const events = numbers.filter((n: number) => n % 2 === 0)
 
       expect(events.toArray()).to.be.deep.equal([2, 4])
+    })
+  })
+
+  describe('.take', () => {
+    it('should take the first n elements of a List', () => {
+      const ls = new List(1, 2, 3)
+      const oneTwo = ls.take(2)
+
+      expect(oneTwo.toArray()).to.be.deep.equal([1, 2])
     })
   })
 })

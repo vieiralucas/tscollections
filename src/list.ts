@@ -60,6 +60,10 @@ export class List<T> {
     return nList
   }
 
+  take(n: number): List<T> {
+    return new List(...this.arr.slice(0, n))
+  }
+
   static empty<T>() {
     return new List<T>()
   }
