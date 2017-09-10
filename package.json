@@ -1,15 +1,14 @@
 {
-  "name": "typedcollections",
+  "name": "tscollections",
   "version": "0.0.0",
   "description": "Collections implemented in typescript",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha test/*.ts --require ts-node/register",
-    "watch": "npm run test -- --watch --watch-extensions ts"
+    "test": "mocha test/*.ts --require ts-node/register"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/vieiralucas/typedcollections.git"
+    "url": "git@github.com/vieiralucas/tscollections.git"
   },
   "keywords": [
     "typescript",
