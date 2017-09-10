@@ -31,10 +31,6 @@ export class Some<T> extends Option<T> {
   }
 
   orElse(el: T): T {
-    if (this.value === null) {
-      return el
-    }
-
     return this.value
   }
 
