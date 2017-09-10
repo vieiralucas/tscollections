@@ -64,6 +64,10 @@ export class List<T> {
     return new List(...this.arr.slice(0, n))
   }
 
+  drop(n: number): List<T> {
+    return new List(...this.arr.slice(0, this.length() - n))
+  }
+
   static empty<T>() {
     return new List<T>()
   }

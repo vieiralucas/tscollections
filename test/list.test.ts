@@ -131,4 +131,13 @@ describe('List', () => {
       expect(oneTwo.toArray()).to.be.deep.equal([1, 2])
     })
   })
+
+  describe('.drop', () => {
+    it('should drop first n elements of a List', () => {
+      const ls = new List(1, 2, 3)
+      const one = ls.drop(2)
+
+      expect(one.toArray()).to.be.deep.equal([1])
+    })
+  })
 })
