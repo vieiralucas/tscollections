@@ -149,4 +149,28 @@ describe('List', () => {
       expect(dbl.toArray()).to.be.deep.equal([2, 4, 6, 8])
     })
   })
+
+  describe('.foldr', () => {
+    it('should reduce a list from the right', () => {
+      const numbers = new List(1, 2, 3, 4)
+      const string = numbers.foldr(
+        (curr: number, previous: string) => previous + String(curr),
+        ''
+      )
+
+      expect(string).to.equal('4321')
+    })
+  })
+
+  describe('.foldl', () => {
+    it('should reduce a list from the left', () => {
+      const numbers = new List(1, 2, 3, 4)
+      const string = numbers.foldl(
+        (curr: number, previous: string) => previous + String(curr),
+        ''
+      )
+
+      expect(string).to.equal('1234')
+    })
+  })
 })

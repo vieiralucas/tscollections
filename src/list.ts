@@ -65,6 +65,14 @@ export class List<T> {
     return new List(...this.arr.map(mapper))
   }
 
+  foldr<T2>(folder: (curr: T, previous: T2) => T2, first: T2): T2 {
+    return this.arr.reduceRight((p, c) => folder(c, p), first)
+  }
+
+  foldl<T2>(folder: (curr: T, previous: T2) => T2, first: T2): T2 {
+    return this.arr.reduce((p, c) => folder(c, p), first)
+  }
+
   static empty<T>() {
     return new List<T>()
   }
