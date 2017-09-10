@@ -173,4 +173,36 @@ describe('List', () => {
       expect(string).to.equal('1234')
     })
   })
+
+  describe('.all', () => {
+    it('should be true if all elements satisfy the predicate', () => {
+      const positive = new List(1, 2, 3, 4)
+      const allPositive = positive.all((n: number) => n > 0)
+
+      expect(allPositive).to.be.true
+    })
+
+    it('should be false if any element do not satisfy the predicate', () => {
+      const positive = new List(1, 2, 3, 4, -2)
+      const allPositive = positive.all((n: number) => n > 0)
+
+      expect(allPositive).to.be.false
+    })
+  })
+
+  describe('.any', () => {
+    it('should be true if any element satisfy the predicate', () => {
+      const n = new List(1, 2, 3, 4)
+      const has3 = n.any((n: number) => n === 3)
+
+      expect(has3).to.be.true
+    })
+
+    it('should be false if all elements do not satisfy the predicate', () => {
+      const positive = new List(1, 2, 3, 4)
+      const hasNegative = positive.any((n: number) => n < 0)
+
+      expect(hasNegative).to.be.false
+    })
+  })
 })

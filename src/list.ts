@@ -73,6 +73,14 @@ export class List<T> {
     return this.arr.reduce((p, c) => folder(c, p), first)
   }
 
+  all(predicate: (el: T) => boolean): boolean {
+    return this.foldl((c, p) => p && predicate(c), true)
+  }
+
+  any(predicate: (el: T) => boolean): boolean {
+    return this.foldl((c, p) => p || predicate(c), false)
+  }
+
   static empty<T>() {
     return new List<T>()
   }
