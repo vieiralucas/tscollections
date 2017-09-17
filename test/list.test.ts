@@ -1,6 +1,6 @@
 import { expect, assert } from 'chai'
-import { List } from '../src/list'
-import { Some, Nothing } from '../src/option'
+import { List } from '../src'
+import { Some, Nothing } from '../src'
 
 describe('List', () => {
   it('should be iterable', () => {
